@@ -1,0 +1,1 @@
+No teste 1 de ACSP, os dois sistemas lineares apresentados em anexo devem ser solucionados. Devem ser utilizados os quatro métodos estudados em aula: eliminação de Gauss, fatoração LU, método de Jacobi e método de Gauss-Seidel.
