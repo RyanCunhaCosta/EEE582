@@ -1,0 +1,2 @@
+No teste 2 de ACSP,  vocês devem solucionar um sistema não linear apresentado em anexo.
+Vocês devem utilizar os três métodos estudados em aula: método da bisseção, método da secante e método de Newton-Raphson.

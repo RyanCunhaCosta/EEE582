@@ -1,4 +1,4 @@
-from utils.modulos import print_enunciado, executar_teste
+from utils.modulos import executar_teste, print_enunciado
 
 
 def main(numero_teste):
@@ -15,4 +15,4 @@ def main(numero_teste):
 
 
 if __name__ == "__main__":
-    main(1)  # < --- Ajustar numero do teste
+    main(2)  # < --- Ajustar numero do teste

@@ -1,5 +1,6 @@
 from typing import List
-from utils.algebra import Matriz, Vetor
+
+from utils.algebra import Derivada, Matriz, Vetor
 
 
 class SolversLineares:
@@ -176,4 +177,134 @@ class SolversLineares:
             print(f"\n\tO método convergiu após {iteracoes} iterações.")
         else:
             print(f"\n\tO método não convergiu após {iteracoes} iterações.")
+        return x
+
+
+class SolversNaoLineares:
+    def __init__(self):
+        self.f = None
+        self.df = None
+        self.x0 = None
+        self.x1 = None
+        self.tol = None
+        self.lim_iter = None
+
+
+    def bissecao(self, f, x0, x1, tol, lim_iter):
+        """
+        Encontra raízes de uma função f dentro de um intervalo [x1, x2]
+        utilizando o método da bisseção.
+        """
+
+        # Verifica se a função f(x) muda de sinal no intervalo, caso contrário, o método da bisseção não pode ser aplicado.
+        if f(x0) * f(x1) > 0:
+            print("Nenhuma raiz encontrada no intervalo fornecido.")
+            return None
+
+        # Itera enquanto o erro for maior que a tolerância ou o número máximo de iterações não for atingido
+        iteracoes = 0
+        convergencia = False
+        while iteracoes < lim_iter:
+            x = (x0 + x1) / 2.0
+
+            if f(x) == 0:
+                continue
+
+            # Atualiza os valores
+            elif f(x0) * f(x) < 0:
+                x1 = x
+            else:
+                x0 = x
+
+            iteracoes += 1
+
+            # Verifica a condição de convergência
+            if abs(f(x1) - f(x0)) < tol:
+                convergencia = True
+                break
+        
+        if convergencia:
+            print(f"\n\tO método convergiu após {iteracoes} iterações.")
+        else:
+            print(f"\n\tO método não convergiu após {iteracoes} iterações.")
+
+        return x
+
+
+    def secante(self, f, x0, x1, tol, lim_iter):
+        """
+        Encontra raízes de uma função f dentro de um intervalo [x1, x2]
+        utilizando o método da secante.
+        """
+
+        # Calcula o valor inicial de f(x) para os pontos iniciais
+        if f(x0) == 0:
+            return f"Raiz: {x0}, Iterações: 0"
+
+        if f(x1) == 0:
+            return f"Raiz: {x1}, Iterações: 1"
+
+        iteracoes = 0
+        convergencia = False
+        while iteracoes < lim_iter:
+
+            # Calcula a nova aproximação utilizando a fórmula do método da secante
+            try:
+                x2 = x1 - f(x1) * (x1 - x0) / (f(x1) - f(x0))
+            except ZeroDivisionError:
+                return "Divisão por zero!"
+
+            # Atualiza os valores
+            x0, x1 = x1, x2
+            iteracoes += 1
+
+            # Verifica a condição de convergência
+            if abs(f(x1)) < tol:
+                convergencia = True
+                break
+        
+        if convergencia:
+            print(f"\n\tO método convergiu após {iteracoes} iterações.")
+        else:
+            print(f"\n\tO método não convergiu após {iteracoes} iterações.")
+
+        return x1
+    
+    def newton_raphson(self, f, x0, x1, tol, lim_iter):
+        """
+        Encontra raízes de uma função f dentro de um intervalo [x1, x2]
+        utilizando o método Newton-Raphson.
+        """
+        # Chute inicial usando a bisseção
+        x = x1 - f(x1) * (x1 - x0) / (f(x1) - f(x0))
+        
+        d = Derivada
+
+        if d.diferencas_finitas(f, x) == 0:
+            print("Derivada é zero no ponto inicial. O método de Newton-Raphson não pode ser aplicado.")
+            return None
+
+        iteracoes = 1
+        convergencia = False
+        while iteracoes <= lim_iter:
+            x_i = x - f(x) / d.diferencas_finitas(f, x)
+
+            # Verifica a condição de convergência
+            if abs(f(x_i)) < tol:
+                convergencia = True
+                break
+
+            if d.diferencas_finitas(f, x_i) == 0:
+                print("Derivada é zero durante a iteração. O método de Newton-Raphson não pode ser aplicado.")
+                return None
+
+            # Atualiza os valores
+            x = x_i
+            iteracoes += 1
+
+        if convergencia:
+            print(f"\n\tO método convergiu após {iteracoes} iterações.")
+        else:
+            print(f"\n\tO método não convergiu após {iteracoes} iterações.")
+
         return x

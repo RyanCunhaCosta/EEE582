@@ -243,3 +243,11 @@ class Matriz:
         for linha in matriz:
             linha_formatada = " ".join(f"{x:.2f}" for x in linha)
             print("[", linha_formatada, "]")
+
+
+class Derivada:
+    def diferencas_finitas(f, x, h=1e-5):
+        """
+        Calcula a derivada de primeira ordem usando o método de diferenças finitas.
+        """
+        return (f(x + h) - f(x - h)) / (2 * h)

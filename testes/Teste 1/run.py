@@ -1,7 +1,7 @@
 from utils.algebra import Matriz
-from utils.solver import SolversLineares
-from utils.benchmark import Timer
 from utils.arquivos import ler_matriz_csv
+from utils.benchmark import Timer
+from utils.solver import SolversLineares
 
 
 def executar_teste():
