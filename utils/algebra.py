@@ -1,5 +1,25 @@
+import math
 from typing import List, Tuple, Union
 
+
+class Angulo:
+    @staticmethod
+    def r2g(radianos: Union[float, List[float]]) -> Union[float, List[float]]:
+        """
+        Converte um ângulo de radianos para graus.
+        """
+        if isinstance(radianos, list):
+            return [r * (180.0 / math.pi) for r in radianos]
+        return radianos * (180.0 / math.pi)
+
+    @staticmethod
+    def g2r(graus: Union[float, List[float]]) -> Union[float, List[float]]:
+        """
+        Converte um ângulo de graus para radianos.
+        """
+        if isinstance(graus, list):
+            return [g * (math.pi / 180.0) for g in graus]
+        return graus * (math.pi / 180.0)
 
 class Vetor:
     @staticmethod

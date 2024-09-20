@@ -15,4 +15,4 @@ def main(numero_teste):
 
 
 if __name__ == "__main__":
-    main(2)  # < --- Ajustar numero do teste
+    main(3)  # < --- Ajustar numero do teste

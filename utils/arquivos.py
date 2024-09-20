@@ -1,3 +1,4 @@
+import json
 from typing import List, Union
 
 
@@ -29,3 +30,9 @@ def ler_matriz_csv(
             dados.append(valores_convertidos)
 
     return dados
+
+
+def ler_json(nome_arquivo):
+    with open(nome_arquivo, 'r') as file:
+        dict = json.load(file)
+    return dict

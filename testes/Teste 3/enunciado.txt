@@ -1,0 +1,2 @@
+No teste 3 de ACSP,  vocês devem solucionar um fluxo de potência do sistema apresentado em anexo.
+Vocês devem utilizar o fluxo de potência linearizado e, depois, solucionar o sistema pelo método de Newton-Raphson.
