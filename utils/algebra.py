@@ -21,6 +21,7 @@ class Angulo:
             return [g * (math.pi / 180.0) for g in graus]
         return graus * (math.pi / 180.0)
 
+
 class Vetor:
     @staticmethod
     def criar(n: int, valor: float = 0.0) -> List[float]:
@@ -263,6 +264,52 @@ class Matriz:
         for linha in matriz:
             linha_formatada = " ".join(f"{x:.2f}" for x in linha)
             print("[", linha_formatada, "]")
+
+    class Complexo:
+        @staticmethod
+        def absoluto(matriz: List[List[complex]]) -> List[List[float]]:
+            """
+            Retorna a parte real de uma matriz de números complexos.
+            """
+            linhas = len(matriz)
+            colunas = len(matriz[0])
+            resultado = Matriz.zeros(linhas, colunas)
+
+            for i in range(linhas):
+                for j in range(colunas):
+                    resultado[i][j] = matriz[i][j].real
+
+            return resultado
+
+        @staticmethod
+        def imaginario(matriz: List[List[complex]]) -> List[List[float]]:
+            """
+            Retorna a parte imaginária de uma matriz de números complexos.
+            """
+            linhas = len(matriz)
+            colunas = len(matriz[0])
+            resultado = Matriz.zeros(linhas, colunas)
+
+            for i in range(linhas):
+                for j in range(colunas):
+                    resultado[i][j] = matriz[i][j].imag
+
+            return resultado
+
+        @staticmethod
+        def angulo(matriz: List[List[complex]]) -> List[List[float]]:
+            """
+            Retorna o ângulo (fase) de uma matriz de números complexos.
+            """
+            linhas = len(matriz)
+            colunas = len(matriz[0])
+            resultado = Matriz.zeros(linhas, colunas)
+
+            for i in range(linhas):
+                for j in range(colunas):
+                    resultado[i][j] = math.atan2(matriz[i][j].imag, matriz[i][j].real)
+
+            return resultado
 
 
 class Derivada:

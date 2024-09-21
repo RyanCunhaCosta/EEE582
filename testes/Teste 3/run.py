@@ -36,28 +36,31 @@ def executar_teste():
     # Opções de métodos
     metodos = [
         ("Linearizado", "linearizado"),
-        # ("Newton Raphson", "newton_raphson"),
+        ("Newton Raphson", "newton_raphson"),
     ]
 
     for metodo_nome, metodo_nome_funcao in metodos:
-        print(f"\nSolução pelo método de {metodo_nome}: ")
+        try:
+            print(f"\nSolução pelo método de {metodo_nome}: ")
 
-        # Instanciar a classe a cada iteração
-        flupot = Flupot()
-        metodo_funcao = getattr(flupot, metodo_nome_funcao)
+            # Instanciar a classe a cada iteração
+            flupot = Flupot()
+            metodo_funcao = getattr(flupot, metodo_nome_funcao)
 
-        timer = Timer()
-        timer.start()
+            timer = Timer()
+            timer.start()
 
-        resultado = metodo_funcao(dados_barras, dados_linhas)
+            resultado = metodo_funcao(dados_barras, dados_linhas)
 
-        print("\nResultado das barras: ")
-        print_table(resultado["BARRAS"])
+            print("\nResultado das barras: ")
+            print_table(resultado["BARRAS"])
 
-        print("\nResultado das linhas: ")
-        print_table(resultado["LINHAS"])
+            print("\nResultado das linhas: ")
+            print_table(resultado["LINHAS"])
 
-        timer.end()
+            timer.end()
+        except Exception as e:
+            print(e)
 
 
 def main():

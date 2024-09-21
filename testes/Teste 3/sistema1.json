@@ -2,19 +2,35 @@
     "BARRAS": [
         {
             "ID": 1,
-            "PG (PU)": 4.0
+            "TIPO": "Vθ",
+            "P (PU)": 4.0,
+            "Q (PU)": null,
+            "V (PU)": 1.0,
+            "θ (graus)": null
         },
         {
             "ID": 2,
-            "PG (PU)": 0
+            "TIPO": "PQ",
+            "P (PU)": 0,
+            "Q (PU)": null,
+            "V (PU)": null,
+            "θ (graus)": null
         },
         {
             "ID": 3,
-            "PG (PU)": -2.0
+            "TIPO": "PQ",
+            "P (PU)": -2.0,
+            "Q (PU)": -1.0,
+            "V (PU)": null,
+            "θ (graus)": null
         },
         {
             "ID": 4,
-            "PG (PU)": 0.0
+            "TIPO": "SLACK",
+            "P (PU)": null,
+            "Q (PU)": null,
+            "V (PU)": 1.0,
+            "θ (graus)": 0.0
         }
     ],
     "LINHAS": [
@@ -22,6 +38,7 @@
             "ID": "A",
             "DE": 1,
             "PARA": 2,
+            "POTENCIA (PU)": null,
             "r": 0.0,
             "x": 0.015,
             "b": 0.0
@@ -30,6 +47,7 @@
             "ID": "B",
             "DE": 2,
             "PARA": 3,
+            "POTENCIA (PU)": null,
             "r": 0.0009,
             "x": 0.014,
             "b": 1.2
@@ -38,6 +56,7 @@
             "ID": "C",
             "DE": 2,
             "PARA": 3,
+            "POTENCIA (PU)": null,
             "r": 0.0009,
             "x": 0.014,
             "b": 1.2
@@ -46,6 +65,7 @@
             "ID": "D",
             "DE": 3,
             "PARA": 4,
+            "POTENCIA (PU)": null,
             "r": 0.0,
             "x": 0.015,
             "b": 0.0
